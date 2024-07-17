@@ -12,14 +12,14 @@ export const Loader = ({ loaded }) => {
           progress === 100 || loaded ? "opacity-0" : ""
         }`}
       >
-        <h1 className="font-bold text-5xl text-black">La Calera Metaverso</h1>
+        <h1 className="font-bold text-5xl text-black">Bienvenidos A La Calera</h1>
         <div className="relative h-5">
           <div
-            className="absolute top-0 left-0 h-full bg-black transition-all"
+            className="absolute top-0 left-0 h-full bg-lime-600 transition-all"
             style={{ width: `${!items ? 0 : progress}%` }}
           />
         </div>
-        {progress < 100 && <p>Loading resources...</p>}
+        {progress < 100 && <p>Cargando Recursos...</p>}
       </div>
     </div>
   );

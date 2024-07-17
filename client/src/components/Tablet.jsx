@@ -16,7 +16,7 @@ export function Tablet(props) {
       />
       <mesh
         geometry={nodes.ChamferCyl001.geometry}
-        material={materials["03___Default"]}
+        material={materials["04___Default"]}
       />
       <mesh
         geometry={nodes.ChamferBox001_1.geometry}

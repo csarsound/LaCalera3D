@@ -124,7 +124,7 @@ export const Lobby = () => {
                         room.nbCharacters > 0 ? "bg-green-500" : "bg-orange-500"
                       }`}
                     ></div>
-                    {room.nbCharacters} people in this room
+                    {room.nbCharacters} Personas En La Sala
                   </div>
                 </div>
               ))}
@@ -135,25 +135,25 @@ export const Lobby = () => {
       <group position-z={-8} rotation-y={Math.PI / 6}>
         <Text3D
           font={"fonts/Inter_Bold.json"}
-          position-z={2}
+          position-z={1.9}
           size={0.3}
-          position-x={-3.5}
-          position-y={2.8}
+          position-x={-2.15}
+          position-y={2.9}
           castShadow
-          rotation-y={Math.PI / 15}
+          rotation-y={Math.PI / 20}
           bevelEnabled
           bevelThickness={0.005}
           letterSpacing={0.012}
         >
           LA CALERA
-          <meshStandardMaterial color="white" />
+          <meshStandardMaterial color="#108080" />
         </Text3D>
 
         <Text3D
           font={"fonts/Inter_Bold.json"}
-          position-z={2.5}
+          position-z={2.}
           size={0.3}
-          position-x={-3}
+          position-x={-2}
           position-y={2.3}
           castShadow
           rotation-y={Math.PI / 15}
@@ -161,7 +161,7 @@ export const Lobby = () => {
           bevelThickness={0.005}
           letterSpacing={0.012}
         >
-          METAVERSO
+          WEB
           <meshStandardMaterial color="white" />
         </Text3D>
         <Skyscraper scale={1.32} />
@@ -171,9 +171,9 @@ export const Lobby = () => {
       {accumulativeShadows}
       <Suspense>
         <LobbyAvatar
-          position-z={-1}
-          position-x={1 * goldenRatio}
-          position-y={isMobile ? -0.4 : 0}
+          position-z={-1.6}
+          position-x={0.7 * goldenRatio}
+          position-y={isMobile ? -0.5 : 10}
           rotation-y={-Math.PI / 8}
         />
       </Suspense>

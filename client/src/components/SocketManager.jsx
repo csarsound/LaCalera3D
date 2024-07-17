@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { io } from "socket.io-client";
 
 export const socket = io(
-  import.meta.env.VITE_SERVER_URL || "http://localhost:3000"
+  import.meta.env.VITE_SERVER_URL || "https://r3f-sims-online-client-u4.vm.elestio.app/"
 );
 export const charactersAtom = atom([]);
 export const mapAtom = atom(null);
