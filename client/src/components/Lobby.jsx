@@ -9,8 +9,8 @@ import { motion } from "framer-motion-3d";
 import { useAtom } from "jotai";
 import { Suspense, useMemo, useRef, useState, useEffect } from "react";
 import { LobbyAvatar } from "./LobbyAvatar";
-import { Skyscraper } from "./Skyscraper";
 import { mapAtom, roomIDAtom, roomsAtom, socket } from "./SocketManager";
+import StaticModels from "./StaticModels";
 import { Tablet } from "./Tablet";
 import { avatarUrlAtom } from "./UI";
 let firstLoad = true;
@@ -96,6 +96,7 @@ export const Lobby = () => {
           firstLoad = false;
         }}
       >
+
         <Tablet scale={0.03} rotation-x={Math.PI / 2} />
         <Html
           position={[0, 0.20, 0.11]}
@@ -174,8 +175,9 @@ export const Lobby = () => {
           WEB
           <meshStandardMaterial color="white" />
         </Text3D>
-        <Skyscraper scale={1} position-x={-3} position-z={-1} />
-        <Skyscraper scale={0.8} position-x={3} position-z={-0.5} />
+        <Suspense fallback={null}>
+          <StaticModels />
+        </Suspense>
       </group>
       {accumulativeShadows}
       <Suspense>
