@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "name": "PARTY ROOM",
-    "password": "WAWA",
+    "name": "PARQUE3D",
+    "password": "ces",
     "items": [
       {
         "name": "loungeSofaCorner",
@@ -106,7 +106,7 @@
   {
     "id": 2,
     "name": "BATHROOM",
-    "password": "WAWA",
+    "password": "ces",
     "items": [
       {
         "name": "washer",
@@ -213,7 +213,7 @@
   {
     "id": 3,
     "name": "KITCHEN",
-    "password": "WAWA",
+    "password": "ces",
     "items": [
       {
         "name": "plant",
@@ -347,7 +347,7 @@
   {
     "id": 4,
     "name": "COSY ROOM",
-    "password": "WAWA",
+    "password": "ces",
     "items": [
       {
         "name": "tableCoffee",

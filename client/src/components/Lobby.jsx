@@ -7,7 +7,7 @@ import {
 } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
 import { useAtom } from "jotai";
-import { Suspense, useMemo, useRef } from "react";
+import { Suspense, useMemo, useRef, useState, useEffect } from "react";
 import { LobbyAvatar } from "./LobbyAvatar";
 import { Skyscraper } from "./Skyscraper";
 import { mapAtom, roomIDAtom, roomsAtom, socket } from "./SocketManager";
@@ -15,10 +15,22 @@ import { Tablet } from "./Tablet";
 import { avatarUrlAtom } from "./UI";
 let firstLoad = true;
 export const Lobby = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 844);
   const [rooms] = useAtom(roomsAtom);
   const [avatarUrl] = useAtom(avatarUrlAtom);
   const [_roomID, setRoomID] = useAtom(roomIDAtom);
   const [_map, setMap] = useAtom(mapAtom);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 844);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   const joinRoom = (roomId) => {
     socket.emit("joinRoom", roomId, {
       avatarUrl,
@@ -26,8 +38,6 @@ export const Lobby = () => {
     setMap(null);
     setRoomID(roomId);
   };
-
-  const isMobile = window.innerWidth < 1024;
 
   const tablet = useRef();
 
@@ -64,19 +74,19 @@ export const Lobby = () => {
   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent); // ugly safari fix as transform position is buggy on it
 
   return (
-    <group position-y={-1.5}>
+    <group position-y={-1.48}>
       <motion.group
         ref={tablet}
-        scale={isMobile ? 0.18 : 0.22}
-        position-x={isMobile ? 0.4 : -0.25 * goldenRatio}
-        position-z={0.5}
+        scale={isMobile ? 0.22 : 0.30}
+        position-x={isMobile ? -0.05 : 0.033}
+        position-z={0.6}
         initial={{
           y: firstLoad ? 0.5 : 1.5,
           rotateY: isSafari ? 0 : isMobile ? 0 : Math.PI / 8,
           // removed because of safari issue with transform enabled on HTML
         }}
         animate={{
-          y: isMobile ? 1.65 : 1.5,
+          y: isMobile ? 1.62 : 1.5,
         }}
         transition={{
           duration: 1,
@@ -88,7 +98,7 @@ export const Lobby = () => {
       >
         <Tablet scale={0.03} rotation-x={Math.PI / 2} />
         <Html
-          position={[0, 0.17, 0.11]}
+          position={[0, 0.20, 0.11]}
           transform={!isSafari}
           center
           scale={0.121}
@@ -96,7 +106,7 @@ export const Lobby = () => {
           <div
             className={`${
               isSafari
-                ? "w-[310px] h-[416px] lg:w-[390px] lg:h-[514px]"
+                ? "w-[270px] h-[330px] lg:w-[390px] lg:h-[514px]"
                 : "w-[390px] h-[514px]"
             }  max-w-full  overflow-y-auto p-5  place-items-center pointer-events-none select-none`}
           >
@@ -137,8 +147,8 @@ export const Lobby = () => {
           font={"fonts/Inter_Bold.json"}
           position-z={1.9}
           size={0.3}
-          position-x={-2.15}
-          position-y={2.9}
+          position-x={-4.5}
+          position-y={2.5}
           castShadow
           rotation-y={Math.PI / 20}
           bevelEnabled
@@ -153,7 +163,7 @@ export const Lobby = () => {
           font={"fonts/Inter_Bold.json"}
           position-z={2.}
           size={0.3}
-          position-x={-2}
+          position-x={0.5}
           position-y={2.3}
           castShadow
           rotation-y={Math.PI / 15}
@@ -164,7 +174,7 @@ export const Lobby = () => {
           WEB
           <meshStandardMaterial color="white" />
         </Text3D>
-        <Skyscraper scale={1.32} />
+
         <Skyscraper scale={1} position-x={-3} position-z={-1} />
         <Skyscraper scale={0.8} position-x={3} position-z={-0.5} />
       </group>
@@ -172,8 +182,8 @@ export const Lobby = () => {
       <Suspense>
         <LobbyAvatar
           position-z={-1.6}
-          position-x={0.7 * goldenRatio}
-          position-y={isMobile ? -0.5 : 10}
+          position-x={isMobile ? 0.2 : 1.1}
+          position-y={isMobile ? -0.5 : -0.4}
           rotation-y={-Math.PI / 8}
         />
       </Suspense>

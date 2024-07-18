@@ -13,7 +13,7 @@ import { socket, userAtom } from "./SocketManager";
 
 import { motion } from "framer-motion-3d";
 
-const MOVEMENT_SPEED = 4;
+const MOVEMENT_SPEED = 2;
 
 export function Avatar({
   id,

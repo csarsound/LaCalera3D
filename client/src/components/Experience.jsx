@@ -66,9 +66,9 @@ export const Experience = ({ loaded }) => {
       true
     );
     controls.current.setPosition(
-      character.position.x + 8,
-      character.position.y + 8,
-      character.position.z + 8,
+      character.position.x + 17,
+      character.position.y + 17,
+      character.position.z + 1,
       true
     );
   });
@@ -93,7 +93,7 @@ export const Experience = ({ loaded }) => {
       >
         <orthographicCamera
           attach={"shadow-camera"}
-          args={[-10, 10, 10, -10]}
+          args={[-100, 10, 10, -100]}
           far={20 + 2}
         />
       </directionalLight>

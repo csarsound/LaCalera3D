@@ -174,10 +174,10 @@ export const Room = () => {
       <AccumulativeShadows
         temporal
         frames={42}
-        alphaTest={0.85}
+        alphaTest={0.23}
         scale={30}
         position={[0, 0, 0]}
-        color="pink"
+        color="lightblue"
       >
         <RandomizedLight
           amount={4}
@@ -189,7 +189,7 @@ export const Room = () => {
         <RandomizedLight
           amount={4}
           radius={5}
-          intensity={0.25}
+          intensity={0.28}
           ambient={0.55}
           position={[-5, 5, -20]}
         />
@@ -245,7 +245,7 @@ export const Room = () => {
           receiveShadow
         >
           <planeGeometry args={map.size} />
-          <meshStandardMaterial color="#f0f0f0" />
+          <meshStandardMaterial color="#108080" />
         </mesh>
       )}
       {(buildMode || shopMode) && (
