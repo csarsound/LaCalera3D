@@ -58,7 +58,7 @@ const PasswordInput = ({ onClose, onSuccess }) => {
             className="bg-green-500 text-white rounded-lg px-4 py-2 flex-1 w-full"
             onClick={checkPassword}
           >
-            Enter
+            Entrar
           </button>
           {error && <p className="text-red-500 text-sm">{error}</p>}
         </div>
@@ -143,7 +143,7 @@ export const UI = () => {
               <input
                 type="text"
                 className="w-56 border px-5 p-4 h-full rounded-full"
-                placeholder="Message..."
+                placeholder="Mensaje..."
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
                     sendChatMessage();
@@ -179,7 +179,7 @@ export const UI = () => {
                 className="p-4 rounded-full bg-slate-500 text-white drop-shadow-md cursor-pointer hover:bg-slate-800 transition-colors"
                 onClick={leaveRoom}
               >
-                LOBBY
+                Inicio
               </button>
             )}
             {/* BACK */}

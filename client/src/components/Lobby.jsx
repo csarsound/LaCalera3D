@@ -22,7 +22,7 @@ export const Lobby = () => {
   const [_map, setMap] = useAtom(mapAtom);
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 844);
+      setIsMobile(window.innerWidth < 660);
     };
 
     window.addEventListener('resize', handleResize);
@@ -41,7 +41,7 @@ export const Lobby = () => {
 
   const tablet = useRef();
 
-  const goldenRatio = Math.min(1, window.innerWidth / 1600);
+  //const goldenRatio = Math.min(1, window.innerWidth / 1600);
 
   const accumulativeShadows = useMemo(
     () => (
@@ -174,7 +174,6 @@ export const Lobby = () => {
           WEB
           <meshStandardMaterial color="white" />
         </Text3D>
-
         <Skyscraper scale={1} position-x={-3} position-z={-1} />
         <Skyscraper scale={0.8} position-x={3} position-z={-0.5} />
       </group>
