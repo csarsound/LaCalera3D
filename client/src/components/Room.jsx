@@ -13,6 +13,7 @@ import { Avatar } from "./Avatar";
 import { Item } from "./Item";
 import { Shop } from "./Shop";
 import { charactersAtom, mapAtom, socket, userAtom } from "./SocketManager";
+import { ModelComponents } from './StaticModels';
 import {
   buildModeAtom,
   draggedItemAtom,
@@ -26,7 +27,7 @@ export const Room = () => {
   const [buildMode] = useAtom(buildModeAtom);
   const [shopMode, setShopMode] = useAtom(shopModeAtom);
   const [characters] = useAtom(charactersAtom);
-  const [map] = useAtom(mapAtom);
+  const [map] = useAtom( mapAtom);
   const [items, setItems] = useAtom(roomItemsAtom);
   const [onFloor, setOnFloor] = useState(false);
   useCursor(onFloor);
@@ -34,6 +35,7 @@ export const Room = () => {
 
   const scene = useThree((state) => state.scene);
   const [user] = useAtom(userAtom);
+  const PisoParque = ModelComponents.pisoParque;
 
   useEffect(() => {
     setItems(map.items);
@@ -248,6 +250,9 @@ export const Room = () => {
           <meshStandardMaterial color="#108080" />
         </mesh>
       )}
+      <Suspense>
+        <PisoParque />
+      </Suspense>
       {(buildMode || shopMode) && (
         <Grid infiniteGrid fadeDistance={50} fadeStrength={5} />
       )}

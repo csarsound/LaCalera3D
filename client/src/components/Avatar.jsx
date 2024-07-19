@@ -17,7 +17,7 @@ const MOVEMENT_SPEED = 2;
 
 export function Avatar({
   id,
-  avatarUrl = "https://models.readyplayer.me/64504a306cdedda3ca81ddd3.glb",
+  avatarUrl = "https://models.readyplayer.me/6451085b3511d32d1af4e9bd.glb",
   ...props
 }) {
   const [chatMessage, setChatMessage] = useState("");
@@ -178,7 +178,7 @@ export function Avatar({
 
 useGLTF.preload(
   localStorage.getItem("avatarURL") ||
-    "https://models.readyplayer.me/64504a306cdedda3ca81ddd3.glb?meshlod=1&quality=high"
+    "https://models.readyplayer.me/6451085b3511d32d1af4e9bd.glb?meshlod=1&quality=high"
 );
 useGLTF.preload("/animations/M_Walk_001.glb");
 useGLTF.preload("/animations/M_Standing_Idle_001.glb");

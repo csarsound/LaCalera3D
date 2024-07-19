@@ -150,8 +150,8 @@ export const Lobby = () => {
           font={"fonts/Inter_Bold.json"}
           position-z={3.8}
           size={0.25}
-          position-x={-4.5}
-          position-y={2.1}
+          position-x={-4.6}
+          position-y={1.9}
           castShadow
           rotation-y={Math.PI / 20}
           bevelEnabled
@@ -159,6 +159,22 @@ export const Lobby = () => {
           letterSpacing={0.012}
         >
           CALERA
+          <meshStandardMaterial color="#108080" />
+        </Text3D>
+
+        <Text3D
+          font={"fonts/Inter_Bold.json"}
+          position-z={3.8}
+          size={0.25}
+          position-x={-4.1}
+          position-y={2.3}
+          castShadow
+          rotation-y={Math.PI / 20}
+          bevelEnabled
+          bevelThickness={0.005}
+          letterSpacing={0.012}
+        >
+          LA
           <meshStandardMaterial color="#108080" />
         </Text3D>
 

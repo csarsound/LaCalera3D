@@ -12,7 +12,7 @@ export const draggedItemRotationAtom = atom(0);
 
 export const avatarUrlAtom = atom(
   localStorage.getItem("avatarURL") ||
-    "https://models.readyplayer.me/64504a306cdedda3ca81ddd3.glb?meshlod=1&quality=high"
+    "https://models.readyplayer.me/6451085b3511d32d1af4e9bd.glb?meshlod=1&quality=high"
 );
 
 const PasswordInput = ({ onClose, onSuccess }) => {
