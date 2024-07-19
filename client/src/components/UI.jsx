@@ -12,7 +12,7 @@ export const draggedItemRotationAtom = atom(0);
 
 export const avatarUrlAtom = atom(
   localStorage.getItem("avatarURL") ||
-    "https://models.readyplayer.me/64504a306cdedda3ca81ddd3.glb?meshlod=1&quality=medium"
+    "https://models.readyplayer.me/64504a306cdedda3ca81ddd3.glb?meshlod=1&quality=high"
 );
 
 const PasswordInput = ({ onClose, onSuccess }) => {
@@ -118,7 +118,7 @@ export const UI = () => {
                   : event.data.url;
               newAvatarUrl +=
                 (newAvatarUrl.includes("?") ? "&" : "?") +
-                "meshlod=1&quality=medium";
+                "meshlod=1&quality=high";
               setAvatarUrl(newAvatarUrl);
               localStorage.setItem("avatarURL", newAvatarUrl);
               if (roomID) {

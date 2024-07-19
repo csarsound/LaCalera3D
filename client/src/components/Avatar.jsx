@@ -178,7 +178,7 @@ export function Avatar({
 
 useGLTF.preload(
   localStorage.getItem("avatarURL") ||
-    "https://models.readyplayer.me/64504a306cdedda3ca81ddd3.glb?meshlod=1&quality=medium"
+    "https://models.readyplayer.me/64504a306cdedda3ca81ddd3.glb?meshlod=1&quality=high"
 );
 useGLTF.preload("/animations/M_Walk_001.glb");
 useGLTF.preload("/animations/M_Standing_Idle_001.glb");

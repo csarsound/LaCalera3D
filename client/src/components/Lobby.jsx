@@ -10,9 +10,10 @@ import { useAtom } from "jotai";
 import { Suspense, useMemo, useRef, useState, useEffect } from "react";
 import { LobbyAvatar } from "./LobbyAvatar";
 import { mapAtom, roomIDAtom, roomsAtom, socket } from "./SocketManager";
-import StaticModels from "./StaticModels";
 import { Tablet } from "./Tablet";
 import { avatarUrlAtom } from "./UI";
+import { ModelComponents } from './StaticModels';
+
 let firstLoad = true;
 export const Lobby = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 844);
@@ -72,12 +73,13 @@ export const Lobby = () => {
     []
   );
   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent); // ugly safari fix as transform position is buggy on it
+  const MapModel = ModelComponents.mapa;
 
   return (
     <group position-y={-1.48}>
       <motion.group
         ref={tablet}
-        scale={isMobile ? 0.22 : 0.30}
+        scale={isMobile ? 0.15 : 0.25}
         position-x={isMobile ? -0.05 : 0.033}
         position-z={0.6}
         initial={{
@@ -86,7 +88,7 @@ export const Lobby = () => {
           // removed because of safari issue with transform enabled on HTML
         }}
         animate={{
-          y: isMobile ? 1.62 : 1.5,
+          y: isMobile ? 1.65 : 1.52,
         }}
         transition={{
           duration: 1,
@@ -146,17 +148,17 @@ export const Lobby = () => {
       <group position-z={-8} rotation-y={Math.PI / 6}>
         <Text3D
           font={"fonts/Inter_Bold.json"}
-          position-z={1.9}
-          size={0.3}
+          position-z={3.8}
+          size={0.25}
           position-x={-4.5}
-          position-y={2.5}
+          position-y={2.1}
           castShadow
           rotation-y={Math.PI / 20}
           bevelEnabled
           bevelThickness={0.005}
           letterSpacing={0.012}
         >
-          LA CALERA
+          CALERA
           <meshStandardMaterial color="#108080" />
         </Text3D>
 
@@ -176,7 +178,7 @@ export const Lobby = () => {
           <meshStandardMaterial color="white" />
         </Text3D>
         <Suspense fallback={null}>
-          <StaticModels />
+          <MapModel />
         </Suspense>
       </group>
       {accumulativeShadows}

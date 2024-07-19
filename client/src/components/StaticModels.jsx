@@ -3,7 +3,7 @@ import { useGLTF } from '@react-three/drei';
 import StaticModel from './StaticModel';
 import { STATIC_MODELS } from '../constants/modelData';
 
-function StaticModels() {
+export function StaticModels() {
   return (
     <>
       {STATIC_MODELS.map((model) => (
@@ -18,6 +18,20 @@ function StaticModels() {
     </>
   );
 }
+
+// Exporta cada modelo individualmente
+export const ModelComponents = STATIC_MODELS.reduce((acc, model) => {
+  acc[model.id] = () => (
+    <Suspense fallback={null}>
+      <StaticModel
+        url={model.url}
+        position={model.position}
+        scale={model.scale}
+      />
+    </Suspense>
+  );
+  return acc;
+}, {});
 
 // Precarga todos los modelos para mejorar el rendimiento
 STATIC_MODELS.forEach(model => useGLTF.preload(model.url));
