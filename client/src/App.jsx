@@ -34,7 +34,7 @@ function App() {
           fov: 30,
         }}
       >
-        <color attach="background" args={["#ffffff"]} />
+        <color attach="background" args={["#108080"]} />
         <ScrollControls pages={roomID ? 4 : 0}>
           <Experience loaded={loaded} />
         </ScrollControls>

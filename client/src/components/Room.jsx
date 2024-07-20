@@ -36,6 +36,8 @@ export const Room = () => {
   const scene = useThree((state) => state.scene);
   const [user] = useAtom(userAtom);
   const PisoParque = ModelComponents.pisoParque;
+  const Iglesia = ModelComponents.Iglesia;
+  const Davivienda = ModelComponents.Davivienda;
 
   useEffect(() => {
     setItems(map.items);
@@ -177,8 +179,8 @@ export const Room = () => {
         temporal
         frames={42}
         alphaTest={0.23}
-        scale={30}
-        position={[0, 0, 0]}
+        //scale={10}
+        position={[5, -1, 5]}
         color="lightblue"
       >
         <RandomizedLight
@@ -252,6 +254,12 @@ export const Room = () => {
       )}
       <Suspense>
         <PisoParque />
+      </Suspense>
+      <Suspense>
+        <Iglesia />
+      </Suspense>
+      <Suspense>
+        <Davivienda />
       </Suspense>
       {(buildMode || shopMode) && (
         <Grid infiniteGrid fadeDistance={50} fadeStrength={5} />

@@ -5,10 +5,16 @@
     "password": "ces",
     "items": [
       {
-        "name": "loungeSofaCorner",
-        "size": [5, 5],
-        "rotation": 3,
-        "gridPosition": [0, 0]
+        "name": "carpaDescubierta",
+        "size": [
+          7,
+          7
+        ],
+        "rotation": 0,
+        "gridPosition": [
+          45,
+          114
+        ]
       },
       {
         "name": "bear",

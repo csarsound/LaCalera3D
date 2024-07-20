@@ -37,8 +37,8 @@ export const Experience = ({ loaded }) => {
       return;
     }
     if (buildMode) {
-      controls.current.setPosition(14, 10, 14, true);
-      controls.current.setTarget(3.5, 0, 3.5, true);
+      controls.current.setPosition(0, 140, -90, true);
+      controls.current.setTarget(30, 30, 20, true);
       return;
     }
 
@@ -66,22 +66,16 @@ export const Experience = ({ loaded }) => {
       true
     );
     controls.current.setPosition(
-      character.position.x + 17,
-      character.position.y + 17,
-      character.position.z + 1,
+      character.position.x + 10,
+      character.position.y + 16,
+      character.position.z + 10,
       true
     );
   });
 
   return (
     <>
-      <Sky
-        distance={450000}
-        sunPosition={[5, 8, 20]}
-        inclination={0}
-        azimuth={0.25}
-        rayleigh={0.1}
-      />
+
       <Environment files={"/textures/venice_sunset_1k.hdr"} />
 
       <ambientLight intensity={0.1} />
