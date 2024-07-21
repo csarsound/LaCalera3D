@@ -37,7 +37,8 @@ export const Room = () => {
   const [user] = useAtom(userAtom);
   const PisoParque = ModelComponents.pisoParque;
   const Iglesia = ModelComponents.Iglesia;
-  const Davivienda = ModelComponents.Davivienda;
+  const Davivienda = ModelComponents.davivienda;
+  const Alcaldia = ModelComponents.alcaldia;
 
   useEffect(() => {
     setItems(map.items);
@@ -252,6 +253,7 @@ export const Room = () => {
           <meshStandardMaterial color="#108080" />
         </mesh>
       )}
+
       <Suspense>
         <PisoParque />
       </Suspense>
@@ -261,6 +263,10 @@ export const Room = () => {
       <Suspense>
         <Davivienda />
       </Suspense>
+      <Suspense>
+        <Alcaldia />
+      </Suspense>
+
       {(buildMode || shopMode) && (
         <Grid infiniteGrid fadeDistance={50} fadeStrength={5} />
       )}
