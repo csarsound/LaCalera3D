@@ -1,4 +1,4 @@
-import { CameraControls, Environment, Sky } from "@react-three/drei";
+import { CameraControls, Environment } from "@react-three/drei";
 
 import { useFrame } from "@react-three/fiber";
 import { useAtom } from "jotai";

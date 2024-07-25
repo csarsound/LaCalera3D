@@ -3,7 +3,9 @@ import {
   Grid,
   RandomizedLight,
   useCursor,
+  PerformanceMonitor,
 } from "@react-three/drei";
+import Stats from 'stats.js'
 
 import { useThree } from "@react-three/fiber";
 import { atom, useAtom } from "jotai";
@@ -23,6 +25,25 @@ import {
 
 export const roomItemsAtom = atom([]);
 
+function PerformanceStats() {
+  useEffect(() => {
+    const stats = new Stats()
+    stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
+    document.body.appendChild(stats.dom)
+
+    function animate() {
+      stats.begin()
+      stats.end()
+      requestAnimationFrame(animate)
+    }
+    requestAnimationFrame(animate)
+
+    return () => document.body.removeChild(stats.dom)
+  }, [])
+
+  return null
+}
+
 export const Room = () => {
   const [buildMode] = useAtom(buildModeAtom);
   const [shopMode, setShopMode] = useAtom(shopModeAtom);
@@ -39,6 +60,9 @@ export const Room = () => {
   const Iglesia = ModelComponents.Iglesia;
   const Davivienda = ModelComponents.davivienda;
   const Alcaldia = ModelComponents.alcaldia;
+  const Olivar = ModelComponents.olivar;
+  const [dpr, setDpr] = useState(0.75);
+  const [lastAdjustTime, setLastAdjustTime] = useState(0);
 
   useEffect(() => {
     setItems(map.items);
@@ -200,11 +224,28 @@ export const Room = () => {
         />
       </AccumulativeShadows>
     ),
-    [items]
+    [items,]
   );
 
   return (
     <>
+      <PerformanceMonitor 
+      onIncline={() => {
+        const newDPR = Math.min(dpr + 0.15, 2.5);
+        console.log('Performance improved, new DPR:', newDPR.toFixed(2));
+        setDpr(newDPR);
+      }}
+
+      onDecline={() => {
+        const now = Date.now();
+        if (now - lastAdjustTime > 2000) { // 2 segundos de demora
+          const newDPR = Math.max(dpr - 0.15, 0.75);
+          console.log('Performance declined, new DPR:', newDPR.toFixed(2));
+          setDpr(newDPR);
+          setLastAdjustTime(now);
+      }
+    }}
+      >
       {shopMode && <Shop onItemSelected={onItemSelected} />}
       {!buildMode && !shopMode && accumulativeShadows}
       {!shopMode &&
@@ -266,6 +307,9 @@ export const Room = () => {
       <Suspense>
         <Alcaldia />
       </Suspense>
+      <Suspense>
+        <Olivar />
+      </Suspense>
 
       {(buildMode || shopMode) && (
         <Grid infiniteGrid fadeDistance={50} fadeStrength={5} />
@@ -285,6 +329,8 @@ export const Room = () => {
             </group>
           </Suspense>
         ))}
+      </PerformanceMonitor>
+      <PerformanceStats />
     </>
   );
 };

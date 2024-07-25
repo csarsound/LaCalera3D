@@ -4,4 +4,5 @@ export const STATIC_MODELS = [
     { id: 'Iglesia', url: '/models/Iglesia.glb', position: [0, -0.08, 0], scale: 1, },
     { id: 'davivienda', url: '/models/davivienda.glb', position: [0, 0, 0], scale: 1, },
     { id: 'alcaldia', url: '/models/alcaldia.glb', position: [0, 0, 0], scale: 1, },
+    { id: 'olivar', url: '/models/olivar.glb', position: [0, 0, 0], scale: 1, },
   ];
