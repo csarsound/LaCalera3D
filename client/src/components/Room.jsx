@@ -1,7 +1,5 @@
 import {
-  AccumulativeShadows,
   Grid,
-  RandomizedLight,
   useCursor,
   PerformanceMonitor,
 } from "@react-three/drei";
@@ -198,34 +196,25 @@ export const Room = () => {
     setDraggedItemRotation(item.rotation || 0);
   };
 
-  const accumulativeShadows = useMemo(
-    () => (
-      <AccumulativeShadows
-        temporal
-        frames={42}
-        alphaTest={0.23}
-        //scale={10}
-        position={[5, -1, 5]}
-        color="lightblue"
-      >
-        <RandomizedLight
-          amount={4}
-          radius={9}
-          intensity={0.38}
-          ambient={0.25}
-          position={[15, 5, -20]}
-        />
-        <RandomizedLight
-          amount={4}
-          radius={5}
-          intensity={0.28}
-          ambient={0.55}
-          position={[-5, 5, -20]}
-        />
-      </AccumulativeShadows>
-    ),
-    [items,]
-  );
+  const staticModels = useMemo(() => (
+    <>
+      <Suspense fallback={null}>
+        <PisoParque />
+      </Suspense>
+      <Suspense fallback={null}>
+        <Iglesia />
+      </Suspense>
+      <Suspense fallback={null}>
+        <Davivienda />
+      </Suspense>
+      <Suspense fallback={null}>
+        <Alcaldia />
+      </Suspense>
+      <Suspense fallback={null}>
+        <Olivar />
+      </Suspense>
+    </>
+  ), []);
 
   return (
     <>
@@ -247,7 +236,7 @@ export const Room = () => {
     }}
       >
       {shopMode && <Shop onItemSelected={onItemSelected} />}
-      {!buildMode && !shopMode && accumulativeShadows}
+      {!buildMode && !shopMode}
       {!shopMode &&
         (buildMode ? items : map.items).map((item, idx) => (
           <Item
@@ -294,22 +283,7 @@ export const Room = () => {
           <meshStandardMaterial color="#108080" />
         </mesh>
       )}
-
-      <Suspense>
-        <PisoParque />
-      </Suspense>
-      <Suspense>
-        <Iglesia />
-      </Suspense>
-      <Suspense>
-        <Davivienda />
-      </Suspense>
-      <Suspense>
-        <Alcaldia />
-      </Suspense>
-      <Suspense>
-        <Olivar />
-      </Suspense>
+      {staticModels}
 
       {(buildMode || shopMode) && (
         <Grid infiniteGrid fadeDistance={50} fadeStrength={5} />

@@ -80,15 +80,17 @@ export const Experience = ({ loaded }) => {
 
       <ambientLight intensity={0.1} />
       <directionalLight
-        position={[4, 4, -4]}
+        position={[8, 32, -10]}
         castShadow
         intensity={0.35}
-        shadow-mapSize={[1024, 1024]}
+        shadow-mapSize={[2048, 2048]}
+        shadow-bias={-0.0001}
       >
         <orthographicCamera
           attach={"shadow-camera"}
-          args={[-100, 10, 10, -100]}
-          far={20 + 2}
+          args={[-100, 60, 60, -100]}
+          near={1}
+          far={100}
         />
       </directionalLight>
       <CameraControls

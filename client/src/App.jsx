@@ -14,7 +14,6 @@ import { UI } from "./components/UI";
 
 function App() {
   const [roomID] = useAtom(roomIDAtom);
-
   const { progress } = useProgress();
   const [loaded, setLoaded] = useState(false);
   const [items] = useAtom(itemsAtom);

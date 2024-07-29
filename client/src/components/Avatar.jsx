@@ -36,7 +36,7 @@ export function Avatar({
 
   const { animations: walkAnimation } = useGLTF("/animations/M_Walk_001.glb");
   const { animations: danceAnimation } = useGLTF(
-    "/animations/M_Dances_001.glb"
+    "/animations/M_Dances_002.glb"
   );
   const { animations: idleAnimation } = useGLTF(
     "/animations/M_Standing_Idle_001.glb"
@@ -126,7 +126,7 @@ export function Avatar({
       path.shift();
     } else {
       if (isDancing) {
-        setAnimation("M_Dances_001");
+        setAnimation("M_Dances_002");
       } else {
         setAnimation("M_Standing_Idle_001");
       }
@@ -182,5 +182,5 @@ useGLTF.preload(
 );
 useGLTF.preload("/animations/M_Walk_001.glb");
 useGLTF.preload("/animations/M_Standing_Idle_001.glb");
-useGLTF.preload("/animations/M_Dances_001.glb");
+useGLTF.preload("/animations/M_Dances_002.glb");
 useGLTF.preload("/animations/M_Standing_Expressions_001.glb");
